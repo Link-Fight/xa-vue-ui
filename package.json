@@ -16,6 +16,7 @@
     "weui": "^1.1.2",
     "xair-css": "^0.1.11"
   },
+  "main": "src/components/index.js",
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
