@@ -2,7 +2,7 @@
 template
 <alert v-if="alert.show" :title="alert.title" :content="alert.content" :time="alert.time" @close="closeAlert"></alert>
 */
-import alert from '@/components/dialog/alert'
+import alert from '../dialog/alert.vue'
 export default {
     components: { alert },
     data() {

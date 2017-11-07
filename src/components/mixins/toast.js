@@ -2,7 +2,7 @@
 template
 <toast v-if="toast.show" :type="toast.type" :content="toast.content"></toast>
 */
-import toast from '@/components/toast'
+import toast from '../toast.vue'
 export default {
     components: { toast },
     data() {

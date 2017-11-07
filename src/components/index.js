@@ -1,6 +1,6 @@
-import toastMixin from '@/components/mixins/toast.js'
-import alertMixin from '@/components/mixins/alert.js'
-import confirmMixin from '@/components/mixins/confirm.js'
+import toastMixin from './mixins/toast.js'
+import alertMixin from './mixins/alert.js'
+import confirmMixin from './mixins/confirm.js'
 export default {
     toastMixin,
     alertMixin,

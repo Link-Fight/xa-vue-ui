@@ -2,7 +2,7 @@
 template
 <confirm v-if="confirm.show" :title="confirm.title" :content="confirm.content" :time="confirm.time" @close="closeConfirm"></confirm>
 */
-import confirm from '@/components/dialog/confirm'
+import confirm from '../dialog/confirm.vue'
 export default {
     components: { confirm },
     data() {
