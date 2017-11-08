@@ -135,10 +135,13 @@ export default {
                     path.push(menu)
                 }
             })
-            if (path.length === 0) return false
-            this.$emit('change', {
-                id, name, level, path
-            })
+            if (path.length === 0) {
+                this.$emit('change', null)
+            } else {
+                this.$emit('change', {
+                    id, name, level, path
+                })
+            }
         }
     },
     created() {
