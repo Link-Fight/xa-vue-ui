@@ -1,7 +1,3 @@
-/*
-template
-<alert v-if="alert.show" :title="alert.title" :content="alert.content" :time="alert.time" @close="closeAlert"></alert>
-*/
 import alert from '../dialog/alert.vue'
 export default {
     components: { alert },
@@ -22,7 +18,7 @@ export default {
          * @param {String} title
          * @param {Number} timeout  '自动关闭时间' s
          */
-        showAlert({content, title = '', timeout = 0}) {
+        showAlert({ content, title = '', timeout = 0 }) {
             return new Promise((resolve, reject) => {
                 clearTimeout(alert.timeout)
                 this.alert.content = content

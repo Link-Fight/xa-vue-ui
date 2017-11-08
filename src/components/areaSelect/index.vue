@@ -113,7 +113,7 @@ export default {
         updateCurItems(enterId, leaveId, item) {
             this.$options.scrollStore[this.saveKey][leaveId] = this.$refs.scrollwrap.scrollTop
             this.items = []
-            this.$options.$service(this.getAreas, { upid: enterId }).then(data => {
+            this.$options.$service({ url: this.getAreas, data: { upid: enterId } }).then(data => {
                 this.items = data
                 if (data.length === 0) {
                     this.emit()
@@ -151,7 +151,7 @@ export default {
         }
         if (this.value && this.value.id) {
             this.$options.$saveDatas = $saveDatas.bind(this)
-            this.$options.$service(this.getUpAreas, { id: this.value.id }).then(data => {
+            this.$options.$service({ url: this.getUpAreas, data: { id: this.value.id } }).then(data => {
                 data.sort((mP, mA) => mP.level - mA.level)
                 let menus = []
                 for (let i = 0; i < data.length; i++) {
@@ -168,57 +168,57 @@ export default {
                 this.seletedStatus = 'UP'
             })
         } else {
-            this.$options.$service(this.getAreas).then(data => { this.items = data })
+            this.$options.$service({ url: this.getAreas }).then(data => { this.items = data })
         }
     }
 }
 </script>
 <style scoped>
 .area-wrap.modal {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 5000;
-    background-color: #FFFFFF;
-    height: 45vh;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5000;
+  background-color: #ffffff;
+  height: 45vh;
 }
 
 .area-title {
-    line-height: 40px;
-    height: 40px;
-    padding: 0 8px;
+  line-height: 40px;
+  height: 40px;
+  padding: 0 8px;
 }
 
 .area-menu {
-    position: relative;
-    margin-right: 8px;
+  position: relative;
+  margin-right: 8px;
 }
 
 .area-item.active,
 .area-menu.active {
-    color: #108ee9;
+  color: #108ee9;
 }
 
 .area-menu.active::after {
-    position: absolute;
-    right: 1px;
-    bottom: 1px;
-    left: 1px;
-    height: 2px;
-    background-color: #108ee9;
-    content: " ";
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  height: 2px;
+  background-color: #108ee9;
+  content: " ";
 }
 
-.area-item>.iconfont {
-    display: none;
+.area-item > .iconfont {
+  display: none;
 }
 
-.area-item.active>.iconfont {
-    display: initial;
+.area-item.active > .iconfont {
+  display: initial;
 }
 
 .action {
-    line-height: 26px;
+  line-height: 26px;
 }
 </style>
