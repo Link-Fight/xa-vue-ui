@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div v-if="modal" class="weui-mask" @click="emit('close')"></div>
+        <div v-if="modal" class="weui-mask" @click="$emit('close')"></div>
         <section class="area-wrap xa-view" :class="{modal:modal}">
             <areaTitle @cancel="$emit('close')" @comfirm="emit()"><slot>请选择</slot></areaTitle>
             <div class="xa-cell xa-line" style="padding-left:8px">
