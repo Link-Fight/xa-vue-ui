@@ -38,7 +38,6 @@ export default {
         }
     },
     created() {
-        console.log('diyRouter', 'created')
         this.interactiveService = () => this
     }
 }
