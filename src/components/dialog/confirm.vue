@@ -8,8 +8,8 @@
                 </div>
                 <div class="weui-dialog__bd" v-html="content"></div>
                 <div class="weui-dialog__ft">
-                    <a @click="onClose('cancel')" href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">取消</a>
-                    <a @click="onClose()" href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确定
+                    <a @click="onClose('cancel')" href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">{{canceltext}}</a>
+                    <a @click="onClose()" href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">{{comfirmtext}}
                         <template v-if="time>0">
                             ({{mTime}})
                         </template>
@@ -24,6 +24,14 @@ import alert from './alert.vue'
 export default {
     name: 'confirm',
     extends: alert,
+    props: {
+        canceltext: {
+            default: '取消'
+        },
+        comfirmtext: {
+            default: '确定'
+        }
+    },
     methods: {
         onClose(action = 'confirm') {
             clearTimeout(this.timeout)

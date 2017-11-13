@@ -13,7 +13,7 @@
     </div>
     <toast v-if="toast.show" :type="toast.type" :content="toast.content"></toast>
     <alert v-if="alert.show" :title="alert.title" :content="alert.content" :time="alert.time" @close="closeAlert"></alert>
-    <confirm v-if="confirm.show" :title="confirm.title" :content="confirm.content" :time="confirm.time" @close="closeConfirm"></confirm>
+    <confirm v-if="confirm.show" :title="confirm.title" :content="confirm.content" :time="confirm.time" :canceltext="confirm.canceltext" :comfirmtext="confirm.comfirmtext" @close="closeConfirm"></confirm>
 </section>
 </template>
 <script>
@@ -42,7 +42,7 @@ export default {
             this.showAlert({ content: 'alert', title: 'xa', timeout: 3 })
         },
         onShowConfirm() {
-            this.showConfirm({ content: 'confirm', title: 'xa', timeout: 3 }).then(() => console.log('success'), () => console.log('err'))
+            this.showConfirm({ content: 'confirm', title: 'xa2', timeout: 30, canceltext: '知道了', comfirmtext: '前往认证' }).then(() => console.log('success'), () => console.log('err'))
         },
         fetchDatas: async function (promiseAction, ...arg) {
             let result

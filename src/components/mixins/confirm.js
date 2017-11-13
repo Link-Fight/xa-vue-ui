@@ -1,6 +1,6 @@
 /*
 template
-<confirm v-if="confirm.show" :title="confirm.title" :content="confirm.content" :time="confirm.time" @close="closeConfirm"></confirm>
+<confirm v-if="confirm.show" :title="confirm.title" :content="confirm.content" :time="confirm.time" :canceltext="confirm.canceltext" :comfirmtext="confirm.comfirmtext" @close="closeConfirm"></confirm>
 */
 import confirm from '../dialog/confirm.vue'
 export default {
@@ -14,7 +14,9 @@ export default {
                 time: 0,
                 timeout: 0,
                 todoResolve: null,
-                todoReject: null
+                todoReject: null,
+                canceltext: '',
+                comfirmtext: ''
             }
         }
     },
@@ -24,11 +26,14 @@ export default {
          * @param {String} title
          * @param {Number} timeout  '自动关闭时间' s
          */
-        showConfirm({content, title = '', timeout = 0}) {
+        showConfirm({ content, title = '', timeout = 0, canceltext = '取消', comfirmtext = '确定' }) {
+            console.log(canceltext)
             return new Promise((resolve, reject) => {
                 clearTimeout(this.confirm.timeout)
                 this.confirm.content = content
                 this.confirm.title = title
+                this.confirm.canceltext = canceltext
+                this.confirm.comfirmtext = comfirmtext
                 this.confirm.show = true
                 if (timeout > 0) {
                     this.confirm.time = timeout

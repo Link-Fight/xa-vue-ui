@@ -5,7 +5,7 @@
     </slot>
     <toast v-if="toast.show" :type="toast.type" :content="toast.content"></toast>
     <alert v-if="alert.show" :title="alert.title" :content="alert.content" :time="alert.time" @close="closeAlert"></alert>
-    <confirm v-if="confirm.show" :title="confirm.title" :content="confirm.content" :time="confirm.time" @close="closeConfirm"></confirm>
+    <confirm v-if="confirm.show" :title="confirm.title" :content="confirm.content" :time="confirm.time" canceltext="123" :comfirmtext="confirm.comfirmtext" @close="closeConfirm"></confirm>
 </section>
 </template>
 <script>
