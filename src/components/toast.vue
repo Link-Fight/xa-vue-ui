@@ -36,8 +36,13 @@ export default {
 </script>
 <style scoped>
 .xa-toast__msg .weui-toast {
-    min-height: 1em;
+    width: 100%;
+    max-width: 280px;
+    left: 50%;
     top: initial;
+    margin-left: 0;
+    transform: translateX(-50%);
+    min-height: 1em;
     bottom: 80px;
 }
 
