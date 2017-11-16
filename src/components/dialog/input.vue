@@ -48,6 +48,7 @@ export default {
 .dialog_input {
   width: 100%;
   border: none;
-  line-height: 32px;
+  line-height: 36px;
+  border-bottom: 1px solid #999;
 }
 </style>

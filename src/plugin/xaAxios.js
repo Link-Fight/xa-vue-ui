@@ -11,7 +11,7 @@ axios.interceptors.request.use(function (config) {
     return config
 })
 axios.interceptors.response.use(function (response) {
-    if (response.data && response.data.status) {
+    if (response.data && (response.data.status || response.data.status === 0)) {
         var status = response.data.status
         switch (status) {
             case 8888:
