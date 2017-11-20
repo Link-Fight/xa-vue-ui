@@ -23,7 +23,7 @@ export default {
     methods: {
         fetchDatas: async function (promiseAction, ...arg) {
             let result
-            this.showToast('正在加载...')
+            this.showToast({ content: '正在加载...' })
             try {
                 if (arg && arg.length >= 1) {
                     result = await promiseAction.apply(this, arg)
@@ -31,7 +31,7 @@ export default {
                     result = await promiseAction()
                 }
             } catch (err) {
-                this.showAlert(err.msg)
+                this.showAlert({ content: err.message })
             }
             this.closeToast()
             return result
