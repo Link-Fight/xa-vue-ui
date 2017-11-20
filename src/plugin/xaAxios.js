@@ -1,5 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.interceptors.request.use(function (config) {
     if (config.method === 'get') {
         config.params = config.params || {}
