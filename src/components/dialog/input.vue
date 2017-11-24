@@ -7,7 +7,7 @@
                     <strong class="weui-dialog__title" v-html="title"></strong>
                 </div>
                 <div class="weui-dialog__bd">
-                    <input class="dialog_input" type="text" :value="value" @input="$emit('input',$event.target.value)" :placeholder="placeholder">
+                    <input ref="input" class="dialog_input" type="text" :value="value" @input="$emit('input',$event.target.value)" :placeholder="placeholder">
                 </div>
                 <div class="weui-dialog__ft">
                     <a @click="onClose('cancel')" href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">{{canceltext}}</a>
@@ -41,6 +41,9 @@ export default {
             clearTimeout(this.timeout)
             this.$emit('close', action)
         }
+    },
+    mounted() {
+        this.$refs.input.focus()
     }
 }
 </script>
