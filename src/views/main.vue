@@ -1,6 +1,7 @@
 <template>
 <section>
     <!-- <router-view :interactiveService="interactiveService"></router-view> -->
+    <div class="com-wrap xa-cell">test</div>
     <div class="com-wrap xa-cell" v-for="toast in toasts" :key="toast" @click="onShowToast(toast)">
         <div class="xa-flex-1">toast</div>
         <div>{{toast}}</div>
