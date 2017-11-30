@@ -81,7 +81,9 @@ export default {
                     // id: 580
                 }
             }
-        }
+        },
+        /**@augments maxLevel 选择到指定层级就终止 */
+        maxLevel: Number
     },
     methods: {
         onMenuClick(menu) {
@@ -111,6 +113,12 @@ export default {
             }
         },
         updateCurItems(enterId, leaveId, item) {
+            if (this.maxLevel) {
+                if (this.menus.length > this.maxLevel) {
+                    this.emit()
+                    return
+                }
+            }
             this.$options.scrollStore[this.saveKey][leaveId] = this.$refs.scrollwrap.scrollTop
             this.items = []
             this.$options.$service({ url: this.getAreas, data: { upid: enterId } }).then(data => {
