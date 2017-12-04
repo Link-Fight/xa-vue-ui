@@ -43,6 +43,9 @@ export function diyAction({ url, data = {}, method = 'get', type = 'json', confi
     }
     baseCfg.responseType = type
     return axios.request(baseCfg).then(response => {
+        if (response === undefined) {
+            return
+        }
         if (!response.data.data) {
             return response.data
         }
