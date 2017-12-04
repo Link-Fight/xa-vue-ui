@@ -17,7 +17,7 @@ axios.interceptors.response.use(function (response) {
         switch (status) {
             case 8888:
                 window.location.href = response.data.data
-                break
+                return
             case 8899:
                 window.history.go(-1)
                 break
