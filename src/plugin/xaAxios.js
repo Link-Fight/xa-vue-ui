@@ -12,12 +12,14 @@ axios.interceptors.request.use(function (config) {
     return config
 })
 axios.interceptors.response.use(function (response) {
+    var flag = false
     if (response.data && (response.data.status || response.data.status === 0)) {
         var status = response.data.status
         switch (status) {
             case 8888:
                 window.location.href = response.data.data
-                return
+                flag = true
+                break
             case 8899:
                 window.history.go(-1)
                 break
@@ -26,11 +28,15 @@ axios.interceptors.response.use(function (response) {
             case 4300:
                 break
         }
-        if (status !== 200) {
-            return Promise.reject(response.data)
+        if (flag === false) {
+            if (status !== 200) {
+                return Promise.reject(response.data)
+            }
         }
     }
-    return response
+    if (flag === false) {
+        return response
+    }
 })
 export function diyAction({ url, data = {}, method = 'get', type = 'json', config = {} }) {
     let baseCfg = Object.assign(Object.create(null), config)
@@ -43,12 +49,13 @@ export function diyAction({ url, data = {}, method = 'get', type = 'json', confi
     }
     baseCfg.responseType = type
     return axios.request(baseCfg).then(response => {
-        if (response === undefined) {
-            return
+        if (response !== undefined) {
+            if (!response.data.data) {
+                return response.data
+            }
+            return response.data.data
+        } else {
+            return new Promise()
         }
-        if (!response.data.data) {
-            return response.data
-        }
-        return response.data.data
     })
 }
