@@ -38,5 +38,8 @@ export default function (obj, target = {}, endFn) {
             }
         }
         obj.$$timer = requestAnimationFrame(loop)
+        return function () {
+            cancelAnimationFrame(obj.$$timer)
+        }
     }
 }
