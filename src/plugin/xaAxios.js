@@ -55,7 +55,7 @@ export function diyAction({ url, data = {}, method = 'get', type = 'json', confi
             }
             return response.data.data
         } else {
-            return new Promise()
+            return new Promise(function () { })
         }
     })
 }
