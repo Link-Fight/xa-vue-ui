@@ -3,15 +3,16 @@
         <div v-if="modal" class="weui-mask" @click="$emit('close')"></div>
         <section class="area-wrap xa-view" :class="{modal:modal}">
             <areaTitle @cancel="$emit('close')" @comfirm="emit()"><slot>请选择</slot></areaTitle>
-            <div class="xa-cell xa-line" style="padding-left:8px">
-                <div v-for="(m,index) in menus" :key="index" @click="onMenuClick(m)" :class="{active:curMenu.id===m.id}" class="area-menu" style="font-size:12px;line-height:2.8em;">{{m.name}}</div>
+            <slot name="header"></slot>
+            <div class="list-header xa-cell">
+                <div v-for="(m,index) in menus" :key="index" @click="onMenuClick(m)" :class="{active:curMenu.id===m.id}" class="area-menu">{{m.name}}</div>
             </div>
-            <main ref="scrollwrap" class="xa-flex-1 xa-container">
-                <template v-for="(it,index) in items">
-                    <div @click="onItemClick(it)" class="area-item" :class="{active:curMenu.id ===it.id}" style="font-size:12px;line-height:2.4em;padding-left:8px" :key="it.id">
-                        {{it.name}}
+            <main ref="scrollwrap" class="list-wrapper xa-flex-1 xa-container">
+                <slot name="items" v-for="item in items" :item="item" :curMenu="curMenu" :onItemClick="onItemClick">
+                    <div @click="onItemClick(item)" class="area-item" :class="{active:curMenu.id ===item.id}" :key="item.id">
+                        {{item.name}}
                     </div>
-                </template>
+                </slot>
                 <loading v-show="items.length===0"></loading>
             </main>
         </section>
@@ -192,7 +193,7 @@ export default {
   bottom: 0;
   z-index: 5000;
   background-color: #ffffff;
-  height: 45vh;
+  height: 70vh;
 }
 
 .area-title {
@@ -231,5 +232,16 @@ export default {
 
 .action {
   line-height: 26px;
+}
+.list-header,
+.list-wrapper {
+  text-indent: 8px;
+}
+.list-header {
+  background-color: #f2f2f2;
+  line-height: 2.8em;
+}
+.list-wrapper {
+  line-height: 2.4em;
 }
 </style>
